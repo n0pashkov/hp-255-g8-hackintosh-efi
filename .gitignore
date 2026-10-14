@@ -1,0 +1,13 @@
+# macOS and editor noise
+.DS_Store
+.AppleDouble
+.LSOverride
+*.swp
+*.tmp
+
+# Local/private material
+*.private.plist
+*.backup
+*.before-*
+*.previous
+raw/
