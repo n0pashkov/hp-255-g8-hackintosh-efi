@@ -31,6 +31,12 @@
 
 Записи для Sequoia присутствуют, но отключены. В эксперименте Sequoia загрузилась, однако `AirportItlwm` не загрузился и AX200 осталась без Wi‑Fi. Этот список кекстов не является профилем с поддержкой Sequoia. В `config.plist` также есть несколько AMD kernel patches с диапазоном Darwin 24.0.0–25.99.99; их наличие не подтверждает работу всей EFI на этих системах. `USBToolBox` и `UTBDefault` отключены; проверенная собственная USB-карта в репозитории не описана.
 
+## Проверка загруженных кекстов в macOS
+
+При проверке `kmutil showloaded` в macOS Ventura 13.7.8 (2026-10-15) в системе были обнаружены: Lilu 1.7.2, VirtualSMC 1.3.7, NootedRed 0.8.10, AppleALC 1.9.7, NVMeFix 1.1.3, VoodooI2C 2.8, VoodooI2CHID 1, SMCBatteryManager 1.3.7, BrightnessKeys 1.0.3, IntelBTPatcher 2.3.0, BlueToolFixup 2.7.2, RealtekRTL8111 3.0.4 и AirportItlwm 2.3.0. Этот список отражает загрузку в работающей macOS и отличается от статусов Enabled/Disabled в EFI.
+
+`IntelBluetoothFirmware` 2.3.0 не появился в выводе загруженных кекстов; System Profiler показывал Bluetooth-контроллер выключенным. Ventura также показывала системные bundle ID `IOSkywalkFamily` и `IO80211FamilyLegacy`; это не означает, что одноимённые отключённые копии из EFI были включены.
+
 `itlwm.kext` не включён в репозиторий. Его удалили до публикации, потому что в старой локальной копии были сохранённые профили Wi‑Fi. В этой Ventura-EFI используйте только включённую запись `AirportItlwm.kext`.
 
 Требование к `AppleMCEReporterDisabler` для версий macOS с AMD описано в [руководстве Dortania по AMD](https://dortania.github.io/OpenCore-Install-Guide/AMD/zen.html#kernel). Приведённые версии относятся к текущему снимку репозитория и не означают, что каждый кекст нужно обновлять независимо.

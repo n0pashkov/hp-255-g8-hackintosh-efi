@@ -4,6 +4,7 @@ English | [Русский](CHANGELOG.ru.md)
 
 ## 2026-10-15
 
+- Added a live macOS snapshot: Wi-Fi association, user-confirmed working Ethernet, loaded kexts, display, memory, NVMe, audio, battery report, and Bluetooth state.
 - Replaced the README feature list with a four-state table: working, partially working, not working, and not tested.
 - Added English originals and linked Russian translations for the README and hardware, kext, troubleshooting, and change log documents.
 - Recorded the actual support boundary: Ventura 13.7.8 is verified; Sequoia booted experimentally, but AX200 Wi-Fi did not work and the published EFI is not a Sequoia profile.

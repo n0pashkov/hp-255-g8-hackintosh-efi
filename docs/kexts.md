@@ -31,6 +31,12 @@ Versions and statuses below are read from the kext bundles and the published `EF
 
 The Sequoia entries are present but disabled. Sequoia booted in an experiment, but `AirportItlwm` did not load and AX200 Wi-Fi was unavailable. This kext list is not a Sequoia support profile. `config.plist` also contains a few AMD kernel patches scoped to Darwin 24.0.0–25.99.99; their presence does not establish that the full EFI works on those releases. `USBToolBox` and `UTBDefault` are disabled, and this repository does not document a validated custom USB map.
 
+## Live kext load check
+
+A read-only `kmutil showloaded` check on macOS Ventura 13.7.8 (2026-10-15) found these relevant kexts loaded: Lilu 1.7.2, VirtualSMC 1.3.7, NootedRed 0.8.10, AppleALC 1.9.7, NVMeFix 1.1.3, VoodooI2C 2.8, VoodooI2CHID 1, SMCBatteryManager 1.3.7, BrightnessKeys 1.0.3, IntelBTPatcher 2.3.0, BlueToolFixup 2.7.2, RealtekRTL8111 3.0.4, and AirportItlwm 2.3.0. This runtime list is separate from the Enabled/Disabled values in the EFI configuration.
+
+`IntelBluetoothFirmware` 2.3.0 did not appear in that loaded-kext output; System Profiler reported the Bluetooth controller Off. Ventura also listed Apple system bundle IDs for `IOSkywalkFamily` and `IO80211FamilyLegacy`; those system entries do not mean that the disabled copies in this EFI were enabled.
+
 `itlwm.kext` is not included. It was removed before publication because an older local copy contained saved Wi-Fi profiles. For this Ventura EFI, use the enabled `AirportItlwm.kext` entry only.
 
 For the AMD macOS version requirements of `AppleMCEReporterDisabler`, see the [Dortania AMD guide](https://dortania.github.io/OpenCore-Install-Guide/AMD/zen.html#kernel). The versions above describe this repository snapshot and are not recommendations to update every kext independently.
