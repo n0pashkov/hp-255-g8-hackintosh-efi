@@ -4,27 +4,27 @@ English | [Русский](README.ru.md)
 
 This repository contains a machine-specific OpenCore EFI for the **HP 255 G8** with an AMD Ryzen 5 5500U. The published configuration uses OpenCore 1.0.7 and was verified with macOS Ventura 13.7.8 (22H730). It is not a universal laptop EFI.
 
-## macOS status
+## Feature status
 
-| macOS | Status |
-|---|---|
-| Ventura 13.7.8 (22H730) | Verified on this laptop. This is the published profile. |
-| Sequoia 15 | Booted during an experiment, but Intel AX200 Wi-Fi did not work. This repository does not claim Sequoia support. |
-| Other releases | Not verified in the recorded setup. |
+| Feature | Status | Notes |
+|---|---|---|
+| Boot macOS Ventura 13.7.8 (22H730) | Working | Verified on this laptop; this is the published profile. |
+| Renoir graphics and built-in 1920×1080 display | Working | Verified with the published EFI. |
+| Samsung NVMe storage | Working | macOS Ventura was captured running from the internal SSD. |
+| Intel AX200 Wi-Fi on Ventura | Working | `AirportItlwm` 2.3.0; link speed reached 867 Mbps during one test. |
+| Built-in speakers and microphone | Working | `AppleALC` 1.9.7 with `alcid=3`. |
+| Brightness slider and function keys | Working | Published ACPI setup and `BrightnessKeys` 1.0.3. |
+| I2C touchpad and buttons | Working | `VoodooI2C` 2.8 and `VoodooI2CHID`. |
+| macOS Sequoia 15 boot | Partially working | Booted in an experiment; the published EFI is not validated for Sequoia. |
+| Intel AX200 Wi-Fi on Sequoia | Not working | `AirportItlwm` stayed unloaded and Wi-Fi was unavailable in the recorded test. |
+| Touchpad with VoodooI2C 2.9.1 | Not working | Test logged `VoodooI2CHIDDevice start failed`; the published profile uses 2.8. |
+| Intel Bluetooth | Not tested | Bluetooth kexts are enabled, but function was not confirmed. |
+| Battery reporting | Not tested | `SMCBatteryManager` is enabled; no functional test was recorded. |
+| Realtek Ethernet | Not tested | `RealtekRTL8111` is enabled; no functional test was recorded. |
+| Camera, HDMI, sleep/wake, and USB ports | Not tested | No end-to-end test was recorded; a validated custom USB map is not documented. |
+| Other macOS releases | Not tested | No results were recorded for other versions. |
 
 The Sequoia-specific kext entries in `config.plist` are disabled. The file also contains a few AMD kernel patches scoped to Darwin 24.0.0–25.99.99; those entries do not make the complete EFI a validated Sequoia or later profile. AMD patches, kexts, and kernel limits must be checked together for the target release. See the [Dortania AMD guide](https://dortania.github.io/OpenCore-Install-Guide/AMD/zen.html#kernel).
-
-## Verified features
-
-- OpenCore boot into macOS Ventura.
-- Built-in AMD Renoir graphics and 1920×1080 internal display.
-- Intel AX200 Wi-Fi through `AirportItlwm` 2.3.0; the system Wi-Fi interface connected at up to 867 Mbps during testing.
-- Internal speakers and microphone through `AppleALC` 1.9.7 with `alcid=3`.
-- Brightness slider and brightness keys through the published ACPI and `BrightnessKeys` setup.
-- I2C touchpad and buttons with `VoodooI2C` 2.8 and `VoodooI2CHID`.
-- NVMe storage, battery reporting, and Realtek Ethernet through the listed kexts.
-
-Intel Bluetooth kexts are enabled, but working Bluetooth was not confirmed in the recorded test. Camera, HDMI, sleep/wake, and every USB port also lack recorded verification.
 
 ## Hardware
 
